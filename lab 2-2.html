@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: rgb(126, 184, 162);
+        font-family: "Poppins", sans-serif;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      form {
+        width: 60%;
+        margin: 4rem auto;
+        text-align: center;
+      }
+
+      .container > div {
+        width: 23%;
+        background-color: #fff;
+        text-align: center;
+      }
+
+      .container > div h2 {
+        padding: 20px;
+      }
+
+      .inProgress h2 {
+        background: orange;
+      }
+
+      .onHold h2 {
+        background: red;
+      }
+
+      .review h2 {
+        background: yellow;
+      }
+
+      .approved h2 {
+        background: green;
+      }
+
+      div {
+        min-height: 250px;
+        list-style: none;
+      }
+
+      p {
+        padding: 20px;
+        border: 1px solid grey;
+      }
+
+      input[type="text"] {
+        padding: 10px 20px;
+        width: 55%;
+      }
+
+      button {
+        padding: 10px 20px;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container" id="container">
+      <div class="inProgress">
+        <h2 class="h2-style gold">In Progress</h2>
+        <div ondragover="stopdefault(event)" ondrop="add(event)" class="tasksSection" id="inProgress">
+<p draggable="true" ondragstart="textmoving(event)" id="1">Task One </p>
+<p draggable="true" ondragstart="textmoving(event)" id="2">Task Two</p>
+<p draggable="true" ondragstart="textmoving(event)" id="3">Task Three</p>
+<p draggable="true" ondragstart="textmoving(event)" id="4">Task Four</p>
+<p draggable="true" ondragstart="textmoving(event)" id="5">Task Five</p>
+<p draggable="true" ondragstart="textmoving(event)" id="6">Task Six</p>
+<p draggable="true" ondragstart="textmoving(event)" id="7">Task Seven</p>
+<p draggable="true" ondragstart="textmoving(event)" id="8">Task Eight</p>
+<p draggable="true" ondragstart="textmoving(event)" id="9">Task Nine</p>
+        </div>
+      </div>
+      <div class="onHold">
+        <h2  class="h2-style red">On Hold</h2>
+        <div ondragover="stopdefault(event)" ondrop="add(event)" class="tasksSection" id="hold"></div>
+      </div>
+      <div class="review">
+        <h2 class="h2-style blue">In Review</h2>
+        <div ondragover="stopdefault(event)" ondrop="add(event)" class="tasksSection" id="review"></div>
+      </div>
+      <div class="approved">
+        <h2 class="h2-style green">Approved</h2>
+        <div ondragover="stopdefault(event)" ondrop="add(event)" class="tasksSection" id="Approved"></div>
+      </div>
+    </section>
+
+    <script>
+  function stopdefault(ev){
+            ev.preventDefault()
+        }
+        function add(ev){
+          var draggedid =  ev.dataTransfer.getData("text")
+          ev.target.appendChild(document.getElementById(draggedid))
+        }
+        function textmoving(ev){
+            ev.dataTransfer.setData('text',ev.target.id)
+        }
+    </script>
+  </body>
+</html>
